@@ -4,6 +4,12 @@ import dark from "./plugins/themes/dark"
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  // router: {
+  //   middleware: 'checkAuth'
+  // },
+  serverMiddleware: [
+    { path: "/api", handler: "~/api/index.js" },
+  ],
   head: {
     title: 'huarique-road',
     htmlAttrs: {
