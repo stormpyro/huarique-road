@@ -1,12 +1,18 @@
-import { Router } from "express"
-const router = Router()
+import { Router } from "express";
+import MainRouter from "./routes/index";
 
-router.get('/health', (req,res) => {
-    res.send('I am alive!')
-})
+const router = Router();
 
-router.post('/auth', (req,res) => {
-    res.send('Auth service')
-})
+router.use("/", MainRouter);
 
-module.exports = router
+// Health check
+router.get("/health", (req, res) => {
+  res.send("I am alive!");
+});
+
+// Bad Route
+router.get("*", (req, res) => {
+  res.end("Invallid Route");
+});
+
+export default router;
